@@ -1,0 +1,38 @@
+[tool.black]
+line-length = 119
+target_version = ['py38']
+exclude = '''
+(
+  /(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | htmlcov
+    | venv
+    | .venv
+  )/
+)
+'''
+
+[tool.poetry]
+name = "mancon-back-end"
+version = "0.1.0"
+description = ""
+authors = ["Pedro Vicente"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+Django = "^4.2.6"
+djangorestframework = "^3.14.0"
+djangorestframework-simplejwt = "^5.3.0"
+djangorestframework-filters = "^0.11.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+flake8 = "^6.1.0"
+pre-commit = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
