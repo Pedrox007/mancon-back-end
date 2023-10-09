@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Black">
-    <option name="enabledOnSave" value="true" />
-    <option name="sdkUUID" value="857d1ef6-b168-49fa-b2a7-d972a85c62ec" />
-  </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (mancon-back-end)" project-jdk-type="Python SDK" />
-</project>

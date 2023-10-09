@@ -11,5 +11,5 @@ repos:
     rev: 3.8.4
     hooks:
     - id: flake8
-      additional_dependencies: [pep8-naming, flake8-isort, flake8-django]
+      additional_dependencies: [pep8-naming, flake8-django]
       args: [--config=.flake8]
