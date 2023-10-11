@@ -17,6 +17,8 @@ class ExpenseTypeSerializer(serializers.ModelSerializer):
 
 
 class ExpenseSerializer(serializers.ModelSerializer):
+    type = ExpenseTypeSerializer(read_only=True)
+    type_id = serializers.PrimaryKeyRelatedField(queryset=ExpenseType.objects.all(), source="type", write_only=True)
     owner = UserSerializer(read_only=True)
     owner_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), source="owner", write_only=True)
 
@@ -30,23 +32,8 @@ class ExpenseSerializer(serializers.ModelSerializer):
             "quantity",
             "shipping_price",
             "type",
+            "type_id",
             "owner",
             "owner_id",
         )
         read_only_fields = ("total_price",)
-
-    def create(self, validated_data):
-        owner = validated_data.pop("owner_id")
-        expense = Expense.objects.create(**validated_data, owner=owner)
-
-        return expense
-
-    def update(self, instance, validated_data):
-        instance.description = validated_data.get("description", instance.description)
-        instance.unit_price = validated_data.get("unit_price", instance.unit_price)
-        instance.quantity = validated_data.get("quantity", instance.quantity)
-        instance.shipping_price = validated_data.get("shipping_price", instance.shipping_price)
-        instance.type = validated_data.get("type", instance.type)
-        instance.save()
-
-        return instance
